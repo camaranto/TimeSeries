@@ -1,0 +1,14 @@
+#!/bin/bash
+#pass the flag install
+
+for package in  numpy pandas seaborn matplotlib	statsmodels xgboost sklearn fbprophet
+do
+    if [ $(pip3 show "$package" | wc -l ) == 0 ]; then
+	echo "$package not installed"
+	if [ "$1" == "install" ]; then
+		pip3 install "$package"
+	fi
+    else
+	echo "$package already installed ;)"
+    fi
+done
